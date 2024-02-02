@@ -1,0 +1,141 @@
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Project intro</ng-template>
+            <div style="display: flex;flex-direction: column;">
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Project title or name" formControlName="projectNameCtrl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <input matInput placeholder="What the project does" formControlName="projectDescCtrl" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Pattern</mat-label>
+                    <!-- <input matInput placeholder="MVC or MVVM or MVI" formControlName="projectPatternCtrl" required> -->
+                    <textarea matInput placeholder="MVC or MVVM or MVI" formControlName="projectPatternCtrl"
+                        cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5" required></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Select Front-End">
+        <form [formGroup]="secondFormGroup">
+            <div style="display: flex;flex-direction: column;">
+                <mat-form-field>
+                    <mat-label>Library</mat-label>
+                    <!-- <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required> -->
+                    <mat-select value="Vue3" formControlName="secondCtrl">
+                        <mat-option value="Svelte">Svelte</mat-option>
+                        <mat-option value="React">React</mat-option>
+                        <mat-option value="Vue3">Vue3</mat-option>
+                        <mat-option value="Angular">Angular 16+</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Framework</mat-label>
+                    <!-- <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required> -->
+                    <mat-select value="NuxtJS" formControlName="secondCtrl">
+                        <mat-option value="NestJS">Svelte</mat-option>
+                        <mat-option value="NuxtJS">NuxtJS</mat-option>
+                        <mat-option value="Ember">Ember</mat-option>
+
+                        <mat-option value="NextJS">NextJS</mat-option>
+                        <mat-option value="SvelteKit">SvelteKit</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup" label="Select Back-End">
+        <form [formGroup]="thirdFormGroup">
+            <div style="display: flex;flex-direction: column;">
+                <mat-form-field>
+                    <mat-label>Language</mat-label>
+                    <!-- <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required> -->
+                    <mat-select value="JavaScript" formControlName="thirdCtrl">
+                        <mat-option value="Golang">Golang</mat-option>
+                        <mat-option value="Ruby">Ruby</mat-option>
+                        <mat-option value="Java">Java</mat-option>
+                        <mat-option value="JavaScript">JavaScript</mat-option>
+                        <mat-option value="Python">Python</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Framework</mat-label>
+                    <!-- <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required> -->
+                    <mat-select value="NodeJS" formControlName="thirdCtrl">
+                        <mat-option value="Gin">Gin</mat-option>
+                        <mat-option value="Rails">Rails</mat-option>
+
+                        <mat-option value="NodeJS">NodeJS</mat-option>
+                        <mat-option value="NuxtJS">NuxtJS</mat-option>
+                        <mat-option value="NestJS">NestJS</mat-option>
+                        <mat-option value="Django">Django</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="lastFormGroup" label="Select database">
+        <form [formGroup]="lastFormGroup">
+            <div style="display: flex;flex-direction: column;">
+                <mat-form-field>
+                    <mat-label>SQL</mat-label>
+                    <!-- <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required> -->
+                    <mat-select value="Supabase" formControlName="lastCtrl">
+                        <mat-option value="Supabase">Supabase</mat-option>
+                        <mat-option value="Airtable">Airtable</mat-option>
+                        <mat-option value="MariaDB">MariaDB</mat-option>
+                        <mat-option value="CockroachDB">CockroachDB</mat-option>
+                        <mat-option value="SQLite">SQLite</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div style="margin: auto;">
+                    <span style="align-self: center; font-size: large;font-weight: 700;color: rgb(168, 167, 167);">---
+                        OR
+                        ---</span>
+                </div>
+                <mat-form-field>
+                    <mat-label>NoSQL</mat-label>
+                    <!-- <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required> -->
+                    <mat-select value="Supabase" formControlName="lastCtrl">
+                        <mat-option value="Firebase">Firebase</mat-option>
+                        <mat-option value="Mongo">MongoDB</mat-option>
+                        <mat-option value="CouchDB">CouchDB</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Finish</button>
+        </div>
+    </mat-step>
+</mat-stepper>

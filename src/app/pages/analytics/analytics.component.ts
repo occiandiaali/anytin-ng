@@ -7,10 +7,12 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { GeneratorComponent } from '../../components/generator/generator.component';
+
 @Component({
   selector: 'app-analytics',
   standalone: true,
-  imports: [MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatTooltipModule, TextFieldModule],
+  imports: [GeneratorComponent, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatTooltipModule, TextFieldModule],
   templateUrl: './analytics.component.html',
   styleUrl: './analytics.component.scss'
 })
