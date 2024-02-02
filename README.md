@@ -6,9 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Demo  
+## Demo   
 
-[recording (7).webm](https://github.com/occiandiaali/mat-sidenav-ng/assets/40769994/6cb0e049-584c-4d97-9a7d-92cf89f3c6c8)
+[butler-vid1.webm](https://github.com/occiandiaali/mat-sidenav-ng/assets/40769994/750a44dc-3965-4ea6-bc55-fbd019ac9c0f)
+
 
 
 ## Further help
