@@ -1,1 +1,129 @@
-<p>tin grid works!</p>
+<!-- <section class="container">
+    @if (isLoading) {
+        @for (i of dummyArray; track i) {
+            <div class="product-tile">
+                <div style="height: 124px;width: 200px;background-color: lightgrey;"></div>
+                <div class="title-price-col">
+                <span style="height: 60px;width: 150px;color: lightgray;margin: 2px;"></span>
+                <span style="height: 40px;width: 100px;color: lightgray;margin: 2px;"></span>
+                <span style="height: 30px;width: 80px;color: lightgray;margin: 2px;"></span>
+                </div>
+            </div>
+        }
+    } @else if (error) {
+        <div>
+            <h2 style="color: red;">Oops!</h2>
+            <p>{{error}}</p>
+        </div>
+    }
+
+    <header><h3>Showing {{products.length ? currentShow : 0}} products</h3></header>
+    @for (product of products; track product.id) {
+        <div class="product-tile">
+            <img style="height: 124px;width: 150px;;border: 1px lightgray;" [src]="product.image" [alt]="product.title"/>
+            <div class="title-price-col">
+                <h4>title: {{product.title}}</h4>
+                <p>price: {{product.price}}</p>
+                <span style="color: gray;font-style: italic;">rating: {{product.rating}}</span>
+            </div>
+        </div>
+    }
+    @empty {
+        @if (!isLoading) {
+            <h3>No products found!</h3>
+        }
+    }
+        <header><h3>Showing {{values.length ? values.length : 0}} products</h3></header>
+    @for (product of values; track product.id) {
+        <div class="product-tile">
+            <img style="height: 124px;width: 150px;;border: 1px lightgray;" [src]="product.image" [alt]="product.title"/>
+            <div class="title-price-col">
+                <h4>title: {{product.title}}</h4>
+                <p>price: {{product.price}}</p>
+                <span style="color: gray;font-style: italic;">rating: {{product.rating}}</span>
+            </div>
+        </div>
+    }
+    @empty {
+        @if (!isLoading) {
+            <h3>No products found!</h3>
+        }
+    }
+</section> -->
+
+  <div style="width: 100%;height: 320px;border-radius: 16px; background-color: rgb(252, 228, 228);">
+  <img src="https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/1.png" alt="banner pic" style="width: 100%;height: 240px;object-fit: contain;" />
+  </div>
+<section>
+    <!-- <header><h3>Showing {{products.length ? currentShow : 0}} products</h3></header> -->
+    <div style="display: flex;margin: 12px; flex-direction: row;justify-content: space-between;">
+  <span style="font-size: larger;font-weight: 800;">Groceries</span>
+  <span style="color: rgb(128, 51, 23);">See all</span>
+  </div>
+    <div class="row1">
+  @if (groceries$ | async; as grocery_products) {
+    @for (product of grocery_products; track product.id) {
+      <app-product-card
+      thumbnail={{product.thumbnail}}
+      title={{product.title}}
+      price={{product.price}}
+      category={{product.category}}
+      rating={{product.rating}}
+      brand={{product.brand}}
+      ></app-product-card>
+    } @empty {
+      <p style="padding-left: 24px;color: purple;font-weight: 800;">No results yet!</p>
+    }
+  } @else {
+    <p style="padding-left: 24px;color: red;font-weight: 800;">Oops! Something's not right!</p>
+  }
+  </div>
+
+  <!-- Beauty -->
+      <div style="display: flex;margin: 12px; flex-direction: row;justify-content: space-between;">
+  <span style="font-size: larger;font-weight: 800;">Beauty</span>
+  <span style="color: rgb(128, 51, 23);">See all</span>
+  </div>
+    <div class="row1">
+  @if (beauty$ | async; as grocery_products) {
+    @for (product of grocery_products; track product.id) {
+      <app-product-card
+      thumbnail={{product.thumbnail}}
+      title={{product.title}}
+      price={{product.price}}
+      category={{product.category}}
+      rating={{product.rating}}
+      brand={{product.brand}}
+      ></app-product-card>
+    } @empty {
+      <p style="padding-left: 24px;color: purple;font-weight: 800;">No results yet!</p>
+    }
+  } @else {
+    <p style="padding-left: 24px;color: red;font-weight: 800;">Oops! Something's not right!</p>
+  }
+  </div>
+
+  <!-- Furniture -->
+      <div style="display: flex;margin: 12px; flex-direction: row;justify-content: space-between;">
+  <span style="font-size: larger;font-weight: 800;">Furniture</span>
+  <span style="color: rgb(128, 51, 23);">See all</span>
+  </div>
+    <div class="row1">
+  @if (furniture$ | async; as grocery_products) {
+    @for (product of grocery_products; track product.id) {
+      <app-product-card
+      thumbnail={{product.thumbnail}}
+      title={{product.title}}
+      price={{product.price}}
+      category={{product.category}}
+      rating={{product.rating}}
+      brand={{product.brand}}
+      ></app-product-card>
+    } @empty {
+      <p style="padding-left: 24px;color: purple;font-weight: 800;">No results yet!</p>
+    }
+  } @else {
+    <p style="padding-left: 24px;color: red;font-weight: 800;">Oops! Something's not right!</p>
+  }
+  </div>
+</section>
