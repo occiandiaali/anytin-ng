@@ -1,0 +1,20 @@
+<div id="container">
+ <img src="{{thumbnail}}" alt={{title}} id="thumb"/>
+  <p style="color: black;"><strong>{{ title }}</strong></p>
+  <p>NGN{{price}}</p>
+  <p>In: {{category}}</p>
+  <p>{{rating}} &#x2605;</p>
+      <p>
+    Listed by 
+  @if (brand !== 'Anonymous') {
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://ionicframework.com/docs/components"
+      >{{brand}}</a
+    >
+  } @else {
+    {{brand}}
+  }
+  </p>
+</div>
