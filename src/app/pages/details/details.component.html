@@ -1,1 +1,10 @@
-<p>details page!</p>
+<button (click)="goBack()" style="background-color: brown;color: white;">Go back</button>
+<div style="display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 24px;">
+<p>Showing {{itemTitle}} details..</p>
+<img src="{{itemThumb}}" alt="{{itemTitle}}" width="250" height="250"/>
+@if (itemBrand) {<p>Seller: {{itemBrand}}</p>}
+<p>In {{itemCategory}}</p>
+<p>NGN{{itemPrice}}</p>
+<p>{{itemDescription}}</p>
+<p>rating: {{itemRating}}</p>
+</div>
