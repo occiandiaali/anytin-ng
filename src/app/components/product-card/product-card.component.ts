@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
+import { NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -15,4 +16,19 @@ export class ProductCardComponent {
   @Input() price?: string;
   @Input() rating?: string;
   @Input() category?: string;
+  @Input() description?: string;
+
+  #router = inject(Router);
+
+  goToDetails() {
+   this.#router.navigate(['/details', JSON.stringify({
+    title: this.title,
+    image: this.thumbnail,
+    description: this.description,
+    price: this.price,
+    brand: this.brand,
+    category: this.category,
+    rating: this.rating
+   })])
+  }
 }
