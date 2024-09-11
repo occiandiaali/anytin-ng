@@ -17,18 +17,11 @@ export class ProductCardComponent {
   @Input() rating?: string;
   @Input() category?: string;
   @Input() description?: string;
+  @Input() id?: string;
 
   #router = inject(Router);
 
-  goToDetails() {
-   this.#router.navigate(['/details', JSON.stringify({
-    title: this.title,
-    image: this.thumbnail,
-    description: this.description,
-    price: this.price,
-    brand: this.brand,
-    category: this.category,
-    rating: this.rating
-   })])
+  goToDetail() {
+    this.#router.navigate(['/details', this.id]);
   }
 }

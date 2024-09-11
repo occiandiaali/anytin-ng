@@ -1,7 +1,9 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
 import { Location } from '@angular/common';
 import { Product } from '../../services/interfaces';
+import { TinService } from '../../services/tin.service';
 
 @Component({
   selector: 'app-details',
@@ -11,8 +13,6 @@ import { Product } from '../../services/interfaces';
   styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit {
- // @Input() title = '';
- // title: string = '';
   item!: any;
   itemTitle = '';
   itemDescription = '';
@@ -25,24 +25,27 @@ export class DetailsComponent implements OnInit {
   #location = inject(Location);
   #route = inject(ActivatedRoute);
   #router = inject(Router);
+  #tinService = inject(TinService);
 
   ngOnInit(): void {
-      this.#route.params.subscribe((params) => {
+      this.receiveParamsToSubTo();
+  }
 
-       this.item = JSON.parse(params['item'])
-       const {title, description, image, price, brand, category, rating} = this.item;
-       this.itemTitle = title;
-       this.itemDescription = description;
-       this.itemThumb = image;
-       this.itemPrice = price;
-       this.itemCategory = category;
-       this.itemBrand = brand;
-       this.itemRating = rating;
-       console.log(`This item: ${JSON.stringify(this.item)}`)
-      // console.log(`Title: ${title}`)
-       console.log(`Desc: ${this.itemDescription}`)
-      })
-
+    receiveParamsToSubTo() {
+    this.#route.params.subscribe((params) => {
+      let id = params['id'];
+      this.#tinService.getSingleTin(id)
+        .subscribe((item: any) => {
+          this.itemTitle = item.title;
+          this.itemThumb = item.thumbnail;
+          this.itemDescription = item.description;
+          this.itemBrand = item.brand;
+          this.itemCategory = item.category;
+          this.itemPrice = item.price;
+          this.itemRating = item.rating;
+          console.log(`Detailed item: ${JSON.stringify(item)}`);
+        });
+    })
   }
 
   goBack() {

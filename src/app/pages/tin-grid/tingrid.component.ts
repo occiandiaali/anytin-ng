@@ -95,7 +95,7 @@ import { ProductCardComponent } from '../../components/product-card/product-card
 })
 export class TinGridComponent implements OnInit {
   #listingService = inject(TinService);
-  beauty$!: Observable<Product[]>;
+  beauty$!: Observable<any>;
   furniture$!: Observable<Product[]>;
   groceries$!: Observable<Product[]>;
 
@@ -106,12 +106,10 @@ export class TinGridComponent implements OnInit {
       this.getAllBeauty();
       this.getAllFurniture();
       this.getAllGroceries();
-
-      
   }
 
   getAllBeauty() {
-          this.beauty$ = this.#listingService.getAll().pipe(
+        this.beauty$ = this.#listingService.getAll().pipe(
         map((response: {products: Product[]}) => {
           return response.products?.filter((listing: Product) => listing.category === "beauty")
         })

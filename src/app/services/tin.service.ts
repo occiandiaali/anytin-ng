@@ -63,4 +63,10 @@ export class TinService {
       `https://dummyjson.com/products/category/${query}`
     );
   }
+
+  getSingleTin(id: string): Observable<any> {
+    return this.#http.get(
+      `https://dummyjson.com/products/${id}`
+    );
+  }
 }
