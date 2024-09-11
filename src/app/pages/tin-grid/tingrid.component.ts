@@ -82,7 +82,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
 import { TinService } from '../../services/tin.service';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { Product } from '../../services/interfaces';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 
@@ -106,6 +106,7 @@ export class TinGridComponent implements OnInit {
       this.getAllBeauty();
       this.getAllFurniture();
       this.getAllGroceries();
+    //  this.logCategory()
   }
 
   getAllBeauty() {
@@ -124,11 +125,17 @@ export class TinGridComponent implements OnInit {
       );
   }
 
+  // logCategory() {
+  //   this.#listingService.getAllByCategory('groceries')
+  //     .subscribe(grocery => console.log(`Groceries Log: ${JSON.stringify(grocery.products)}`))
+  // }
+
     getAllGroceries() {
     this.groceries$ = this.#listingService.getAll().pipe(
         map((response: {products: Product[]}) => {
           return response.products?.filter((listing: Product) => listing.category === "groceries")
-        })
+        }),
+        take(3)
       );
   }
 }

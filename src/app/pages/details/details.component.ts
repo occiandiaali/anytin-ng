@@ -1,19 +1,20 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs';
+
+import { MatIconModule } from '@angular/material/icon';
 import { Location } from '@angular/common';
-import { Product } from '../../services/interfaces';
+
 import { TinService } from '../../services/tin.service';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit {
-  item!: any;
+ 
   itemTitle = '';
   itemDescription = '';
   itemThumb = '';
@@ -24,7 +25,7 @@ export class DetailsComponent implements OnInit {
 
   #location = inject(Location);
   #route = inject(ActivatedRoute);
-  #router = inject(Router);
+
   #tinService = inject(TinService);
 
   ngOnInit(): void {
@@ -34,6 +35,7 @@ export class DetailsComponent implements OnInit {
     receiveParamsToSubTo() {
     this.#route.params.subscribe((params) => {
       let id = params['id'];
+     
       this.#tinService.getSingleTin(id)
         .subscribe((item: any) => {
           this.itemTitle = item.title;
@@ -43,7 +45,7 @@ export class DetailsComponent implements OnInit {
           this.itemCategory = item.category;
           this.itemPrice = item.price;
           this.itemRating = item.rating;
-          console.log(`Detailed item: ${JSON.stringify(item)}`);
+        //  console.log(`Detailed item: ${JSON.stringify(item)}`);
         });
     })
   }
