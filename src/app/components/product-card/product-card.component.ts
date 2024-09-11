@@ -22,6 +22,6 @@ export class ProductCardComponent {
   #router = inject(Router);
 
   goToDetail() {
-    this.#router.navigate(['/details', this.id]);
+    this.#router.navigate([`/details/${this.id}/${this.title?.toLocaleLowerCase()}`]);
   }
 }
